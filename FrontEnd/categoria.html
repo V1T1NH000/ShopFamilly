@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopFamily - Categoria</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="dark-theme">
+
+    <div class="app-container">
+        
+        <header class="category-header">
+            <a href="mais_compras.html" class="back-arrow-btn">
+                <i class="fas fa-chevron-left"></i>
+            </a>
+            <h1 id="category-title" class="category-main-title">Carregando...</h1>
+            <div style="width: 40px;"></div> </header>
+
+        <main class="main-content">
+            <div class="products-vertical-grid" id="produtos-container">
+                </div>
+        </main>
+
+        <nav class="bottom-nav-container">
+            <div class="bottom-nav">
+                <a href="index.html" class="nav-item">
+                    <i class="fas fa-home"></i>
+                </a>
+                <a href="mais_compras.html" class="nav-item active">
+                    <i class="fas fa-store"></i>
+                </a>
+                <a href="favoritos.html" class="nav-item">
+                    <i class="fas fa-heart"></i>
+                </a>
+                <a href="listas.html" class="nav-item">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                <a href="perfil.html" class="nav-item">
+                    <i class="fas fa-user"></i>
+                </a>
+            </div>
+        </nav>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="categoria.script.js"></script>
+</body>
+</html>

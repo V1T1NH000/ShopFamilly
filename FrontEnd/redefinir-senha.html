@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopFamily - Redefinir Senha</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="dark-theme">
+
+    <div class="container">
+        <!-- Logo e Título -->
+        <div class="logo-container">
+            <div class="logo-icon"></div>
+            <h1 class="brand-title">ShopFamily</h1>
+        </div>
+
+        <!-- Mensagem de Boas-Vindas Personalizada conforme image_cbe006.png -->
+        <div class="welcome-message">
+            Olá <span id="user-name">Carregando...</span>, Para redefinir sua senha, preencha os campos:
+        </div>
+
+        <!-- Formulário de Nova Senha -->
+        <form id="redefinirSenhaForm" class="auth-form">
+            
+            <div class="input-group">
+                <input type="password" id="nova-senha" placeholder="Nova Senha" required>
+            </div>
+
+            <div class="input-group">
+                <input type="password" id="repetir-senha" placeholder="Repetir Senha" required>
+            </div>
+
+            <button type="submit" class="btn-primary" style="width: 60%;">Redefinir a Senha</button>
+            
+        </form>
+    </div>
+
+    <!-- Scripts do Supabase e sua Lógica -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="login.script.js"></script>
+</body>
+</html>

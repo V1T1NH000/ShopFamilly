@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopFamily - Esqueci a Senha</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="dark-theme">
+
+    <div class="container">
+        <div class="logo-container">
+            <div class="logo-icon"></div> <h1 class="brand-title">ShopFamily</h1>
+        </div>
+
+        <form id="esqueciSenhaForm" class="auth-form">
+            
+            <div class="input-group">
+                <input type="email" id="recuperar-email" placeholder="E-mail" required>
+            </div>
+
+            <div class="input-group">
+                <input type="email" id="recuperar-confirmar-email" placeholder="Confirmar E-mail" required>
+            </div>
+
+            <button type="submit" class="btn-primary">Enviar e-mail</button>
+            
+        </form>
+
+        <div class="form-footer">
+            <a href="login.html" class="back-link"><i class="fas fa-arrow-left"></i> Voltar para o login</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="login.script.js"></script>
+</body>
+</html>

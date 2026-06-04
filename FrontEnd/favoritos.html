@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopFamily - Favoritos</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="dark-theme">
+
+    <div class="app-container">
+        
+        <header class="search-header">
+            <div class="search-bar-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" placeholder="Search" id="search-input">
+            </div>
+            <button class="menu-toggle-btn">
+                <i class="fas fa-sliders-h"></i>
+            </button>
+        </header>
+
+        <main class="main-content">
+            <section class="content-section">
+                <h2 class="page-title">Lista de Favoritos</h2>
+                
+                <div class="products-vertical-grid" id="favoritos-container">
+                    </div>
+            </section>
+        </main>
+
+        <nav class="bottom-nav-container">
+            <div class="bottom-nav">
+                <a href="index.html" class="nav-item">
+                    <i class="fas fa-home"></i>
+                </a>
+                <a href="mais_compras.html" class="nav-item">
+                    <i class="fas fa-store"></i>
+                </a>
+                <a href="favoritos.html" class="nav-item active">
+                    <i class="fas fa-heart"></i>
+                </a>
+                <a href="listas.html" class="nav-item">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                <a href="perfil.html" class="nav-item">
+                    <i class="fas fa-user"></i>
+                </a>
+            </div>
+        </nav>
+
+    <div class="custom-modal-overlay" id="lista-select-modal">
+        <div class="custom-modal-card">
+            <h3 class="modal-title">Adicionar à qual lista?</h3>
+            <p class="modal-subtitle">Selecione uma de suas listas ativas abaixo:</p>
+            
+            <select id="select-lista-destino" class="modal-input-field" style="width: 100%; padding: 10px; margin-bottom: 20px; border-radius: 8px; background: #1e293b; color: #fff; border: 1px solid #475569;">
+                </select>
+            
+            <div class="modal-actions">
+                <button class="modal-btn btn-cancel" onclick="fecharModalSelecao()">Cancelar</button>
+                <button class="modal-btn btn-confirm" onclick="confirmarEnvioParaLista()">Adicionar</button>
+            </div>
+        </div>
+    </div>
+
+</div> <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="favoritos.script.js"></script>
+</body>
+</html>

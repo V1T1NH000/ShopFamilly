@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopFamily - Cadastro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="login.style.css">
+</head>
+<body>
+
+    <div class="app-wrapper">
+        <main class="login-container">
+            <div class="logo-area">
+                <div class="logo-icon"></div>
+                <h1 class="logo-text">ShopFamily</h1>
+            </div>
+
+            <form id="cadastroForm" class="login-form">
+                <div class="input-group">
+                    <input type="text" id="cad-nome" placeholder="Nome Completo" required>
+                </div>
+
+                <div class="input-row">
+                    <div class="input-group">
+                        <input type="email" id="cad-email" placeholder="E-mail" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="cad-familia" placeholder="Nome da Família" required>
+                    </div>
+                </div>
+                
+                <div class="input-group password-wrapper">
+                    <input type="password" id="cad-senha" placeholder="Senha" required>
+                    <button type="button" class="toggle-password" onclick="togglePasswordVisibility('cad-senha', this)">
+                        <i class="far fa-eye"></i>
+                    </button>
+                </div>
+
+                <div class="input-group password-wrapper">
+                    <input type="password" id="cad-confirmar" placeholder="Confirmar Senha" required>
+                    <button type="button" class="toggle-password" onclick="togglePasswordVisibility('cad-confirmar', this)">
+                        <i class="far fa-eye"></i>
+                    </button>
+                </div>
+
+                <div class="terms-wrapper">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">Aceitar termos de uso</label>
+                </div>
+
+                <button type="submit" class="btn-primary custom-radius">Criar Conta</button>
+                
+                <div class="back-to-login">
+                    <a href="login.html" class="link-action">Já tem conta? Entrar</a>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="login.script.js"></script>
+</body>
+</html>

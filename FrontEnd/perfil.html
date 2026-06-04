@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopFamily - Perfil</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Estilos para gerenciar a transição das telas e submenus */
+        .view-section { display: none; }
+        .view-section.active { display: block; }
+        .submenu-items { display: none; flex-direction: column; gap: 8px; padding: 10px 10px 0 10px; }
+        .submenu-items.show { display: flex; }
+        .sub-item-link { display: flex; justify-content: space-between; align-items: center; padding: 12px; background: #131c2e; border-radius: 8px; color: #fff; text-decoration: none; font-size: 0.9rem; margin-top: 5px; }
+        
+        /* Switch/Toggle estilizado para a aba de notificações */
+        .switch { position: relative; display: inline-block; width: 44px; height: 24px; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #334155; transition: .3s; border-radius: 24px; }
+        .slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; transition: .3s; border-radius: 50%; }
+        input:checked + .slider { background-color: #3b82f6; }
+        input:checked + .slider:before { transform: translateX(20px); }
+    </style>
+</head>
+<body class="dark-theme">
+
+    <div class="app-container">
+        
+        <!-- ==================== VIEW 1: PERFIL PRINCIPAL ==================== -->
+        <div id="view-perfil-main" class="view-section active">
+            <header class="search-header">
+                <div class="search-bar-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" placeholder="Search" id="search-input">
+                </div>
+                <button class="cart-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                </button>
+            </header>
+
+            <main class="main-content">
+                <section class="profile-user-section" style="display: flex; align-items: center; gap: 20px; padding: 20px 0; margin-bottom: 20px;">
+                    <div class="profile-avatar" style="width: 70px; height: 70px; background-color: #cbd5e1; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-user" style="font-size: 2rem; color: #475569;"></i>
+                    </div>
+                    <div class="profile-info-text">
+                        <h2 class="user-profile-name" style="font-size: 1.5rem; font-weight: 600; color: #fff; margin: 0;">Carregando...</h2>
+                        <p class="user-profile-email" style="font-size: 0.85rem; color: rgba(255,255,255,0.5); margin: 4px 0 0 0;">buscando e-mail...</p>
+                    </div>
+                </section>
+
+                <section class="profile-menu-wrapper" style="display: flex; flex-direction: column; gap: 15px;">
+                    
+                    <!-- Card Conta (Accordion) -->
+                    <div class="profile-menu-card" style="background: #1e293b; border-radius: 12px; padding: 16px; cursor: pointer;" onclick="toggleAccordion('submenu-conta', this)">
+                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                            <div style="display: flex; align-items: center; gap: 15px;">
+                                <i class="fas fa-user-circle" style="font-size: 1.3rem; color: #3b82f6;"></i>
+                                <div style="display: flex; flex-direction: column; gap: 2px;">
+                                    <span style="font-weight: 500; font-size: 1rem;">Conta</span>
+                                    <span style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">Dados da conta, favoritos</span>
+                                </div>
+                            </div>
+                            <i class="fas fa-chevron-down arrow-icon" style="font-size: 0.9rem; color: rgba(255,255,255,0.4); transition: 0.3s;"></i>
+                        </div>
+                        
+                        <div id="submenu-conta" class="submenu-items" onclick="event.stopPropagation();">
+                            <a href="#" class="sub-item-link" onclick="mudarView('view-dados-conta')">
+                                <span>Dados da Conta</span>
+                                <i class="fas fa-chevron-right" style="font-size: 0.8rem; color: rgba(255,255,255,0.4);"></i>
+                            </a>
+                            <a href="favoritos.html" class="sub-item-link">
+                                <span>Favoritos</span>
+                                <i class="fas fa-chevron-right" style="font-size: 0.8rem; color: rgba(255,255,255,0.4);"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card Configurações (Accordion Adicionado!) -->
+                    <div class="profile-menu-card" style="background: #1e293b; border-radius: 12px; padding: 16px; cursor: pointer;" onclick="toggleAccordion('submenu-config', this)">
+                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                            <div style="display: flex; align-items: center; gap: 15px;">
+                                <i class="fas fa-cog" style="font-size: 1.3rem; color: #3b82f6;"></i>
+                                <div style="display: flex; flex-direction: column; gap: 2px;">
+                                    <span style="font-weight: 500; font-size: 1rem;">Configurações</span>
+                                    <span style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">segurança, dispositivo e mais</span>
+                                </div>
+                            </div>
+                            <i class="fas fa-chevron-down arrow-icon" style="font-size: 0.9rem; color: rgba(255,255,255,0.4); transition: 0.3s;"></i>
+                        </div>
+
+                        <div id="submenu-config" class="submenu-items" onclick="event.stopPropagation();">
+                            <a href="#" class="sub-item-link" onclick="mudarView('view-config-seguranca')">
+                                <span>Segurança</span>
+                                <i class="fas fa-chevron-right" style="font-size: 0.8rem; color: rgba(255,255,255,0.4);"></i>
+                            </a>
+                            <a href="#" class="sub-item-link" onclick="limparHistoricoBusca()">
+                                <span>Limpar Histórico de Busca</span>
+                                <i class="fas fa-trash-alt" style="font-size: 0.8rem; color: #ef4444;"></i>
+                            </a>
+                            <a href="#" class="sub-item-link" onclick="mudarView('view-config-notificacoes')">
+                                <span>Notificações</span>
+                                <i class="fas fa-chevron-right" style="font-size: 0.8rem; color: rgba(255,255,255,0.4);"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Ajuda e Termos -->
+                    <div class="profile-menu-card" style="background: #1e293b; border-radius: 12px; padding: 16px; display: flex; align-items: center; justify-content: space-between; cursor: pointer;">
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <i class="fas fa-question-circle" style="font-size: 1.3rem; color: #3b82f6;"></i>
+                            <div style="display: flex; flex-direction: column; gap: 2px;">
+                                <span style="font-weight: 500; font-size: 1rem;">Ajuda e Termos</span>
+                                <span style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">Central de ajuda, termos de uso e políticas</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-down" style="font-size: 0.9rem; color: rgba(255,255,255,0.4);"></i>
+                    </div>
+
+                    <button id="btn-logout" style="margin-top: 20px; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); color: #ef4444; padding: 14px; border-radius: 12px; font-weight: 600; cursor: pointer; width: 100%;">
+                        <i class="fas fa-sign-out-alt" style="margin-right: 8px;"></i> Sair da Conta
+                    </button>
+                </section>
+            </main>
+        </div>
+
+        <!-- ==================== VIEW 2: DADOS DA CONTA ==================== -->
+        <div id="view-dados-conta" class="view-section">
+            <header class="search-header" style="justify-content: flex-start; gap: 20px; align-items: center;">
+                <button onclick="mudarView('view-perfil-main')" style="background: none; border: none; color: #fff; cursor: pointer; font-size: 1.2rem;">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <h2 style="font-size: 1.2rem; font-weight: 600; margin: 0; color: #fff;">Dados da Conta</h2>
+            </header>
+            <main class="main-content" style="margin-top: 25px;">
+                <div style="display: flex; flex-direction: column; gap: 15px;">
+                    <div class="profile-menu-card" style="background: #1e293b; border-radius: 12px; padding: 18px; display: flex; align-items: center; justify-content: space-between; cursor: pointer;" onclick="mudarView('view-infos-acesso')">
+                        <div>
+                            <h4 style="margin: 0; font-size: 1rem; font-weight: 500;">Informações de Acesso</h4>
+                            <p style="margin: 4px 0 0 0; font-size: 0.75rem; color: rgba(255,255,255,0.4);">Cadastre os dados e acesse de forma segura</p>
+                        </div>
+                        <i class="fas fa-chevron-right" style="color: rgba(255,255,255,0.4);"></i>
+                    </div>
+                    <div class="profile-menu-card" style="background: #1e293b; border-radius: 12px; padding: 18px; display: flex; align-items: center; justify-content: space-between; cursor: pointer;">
+                        <div>
+                            <h4 style="margin: 0; font-size: 1rem; font-weight: 500;">Anúncios e Publicidade</h4>
+                        </div>
+                        <i class="fas fa-chevron-right" style="color: rgba(255,255,255,0.4);"></i>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- ==================== VIEW 3: INFORMAÇÕES DE ACESSO ==================== -->
+        <div id="view-infos-acesso" class="view-section">
+            <header class="search-header" style="justify-content: flex-start; gap: 20px; align-items: center;">
+                <button onclick="mudarView('view-dados-conta')" style="background: none; border: none; color: #fff; cursor: pointer; font-size: 1.2rem;">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <h2 style="font-size: 1.2rem; font-weight: 600; margin: 0; color: #fff;">Informações de Acesso</h2>
+            </header>
+            <main class="main-content" style="margin-top: 25px;">
+                <h3 style="font-size: 1.1rem; color: #fff; margin-bottom: 5px;">Dados de Acesso</h3>
+                <p style="font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-bottom: 20px;">Usados para acessar a conta e também para garantir mais segurança</p>
+                <div style="background: #1e293b; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 15px; margin-bottom: 25px;">
+                    <div>
+                        <label style="font-size: 0.75rem; color: rgba(255,255,255,0.4); display: block; margin-bottom: 4px;">E-mail</label>
+                        <span class="user-profile-email" style="font-size: 0.95rem; color: #fff; font-weight: 500;">...</span>
+                    </div>
+                    <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.05); margin: 0;">
+                    <div>
+                        <label style="font-size: 0.75rem; color: rgba(255,255,255,0.4); display: block; margin-bottom: 4px;">Telefone</label>
+                        <span style="font-size: 0.95rem; color: #fff; font-weight: 500;">+55 (11) 91234-5678</span>
+                    </div>
+                </div>
+                <h3 style="font-size: 1.1rem; color: #fff; margin-bottom: 20px;">Dados de Contato</h3>
+                <div style="background: #1e293b; border-radius: 12px; padding: 16px;">
+                    <label style="font-size: 0.75rem; color: rgba(255,255,255,0.4); display: block; margin-bottom: 4px;">Telefone</label>
+                    <span style="font-size: 0.95rem; color: #fff; font-weight: 500;">+55 (11) 91234-5678</span>
+                </div>
+            </main>
+        </div>
+
+        <!-- ==================== SUBVIEW CONFIG: SEGUROS / SENHA ==================== -->
+        <div id="view-config-seguranca" class="view-section">
+            <header class="search-header" style="justify-content: flex-start; gap: 20px; align-items: center;">
+                <button onclick="mudarView('view-perfil-main')" style="background: none; border: none; color: #fff; cursor: pointer; font-size: 1.2rem;">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <h2 style="font-size: 1.2rem; font-weight: 600; margin: 0; color: #fff;">Segurança</h2>
+            </header>
+            <main class="main-content" style="margin-top: 25px;">
+                <h3 style="font-size: 1.1rem; color: #fff; margin-bottom: 5px;">Alterar Senha</h3>
+                <p style="font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-bottom: 20px;">Escolha uma senha forte para proteger sua conta</p>
+                
+                <form id="form-alterar-senha" style="display: flex; flex-direction: column; gap: 15px;">
+                    <div style="background: #1e293b; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 12px;">
+                        <div>
+                            <label style="font-size: 0.75rem; color: rgba(255,255,255,0.4); display: block; margin-bottom: 6px;">Nova Senha</label>
+                            <input type="password" id="input-nova-senha" required style="width: 100%; background: #131c2e; border: 1px solid #334155; padding: 12px; border-radius: 8px; color: #fff; box-sizing: border-box;" placeholder="Mínimo 6 caracteres">
+                        </div>
+                    </div>
+                    <button type="submit" style="background: #3b82f6; color: #fff; font-weight: 600; padding: 14px; border-radius: 12px; border: none; cursor: pointer; width: 100%;">
+                        Atualizar Senha
+                    </button>
+                </form>
+            </main>
+        </div>
+
+        <!-- ==================== SUBVIEW CONFIG: NOTIFICAÇÕES ==================== -->
+        <div id="view-config-notificacoes" class="view-section">
+            <header class="search-header" style="justify-content: flex-start; gap: 20px; align-items: center;">
+                <button onclick="mudarView('view-perfil-main')" style="background: none; border: none; color: #fff; cursor: pointer; font-size: 1.2rem;">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <h2 style="font-size: 1.2rem; font-weight: 600; margin: 0; color: #fff;">Notificações</h2>
+            </header>
+            <main class="main-content" style="margin-top: 25px;">
+                <h3 style="font-size: 1.1rem; color: #fff; margin-bottom: 5px;">Preferências do App</h3>
+                <p style="font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-bottom: 20px;">Escolha quais alertas você quer receber</p>
+                
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <div style="background: #1e293b; border-radius: 12px; padding: 16px; display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <span style="font-weight: 500; display: block; font-size: 0.95rem;">Atualizações de Listas</span>
+                            <span style="font-size: 0.75rem; color: rgba(255,255,255,0.4);">Avisar quando alguém mexer na lista da família</span>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                    <div style="background: #1e293b; border-radius: 12px; padding: 16px; display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <span style="font-weight: 500; display: block; font-size: 0.95rem;">Lembretes de Compras</span>
+                            <span style="font-size: 0.75rem; color: rgba(255,255,255,0.4);">Alertas semanais para não esquecer de abastecer</span>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Menu de navegação inferior global -->
+        <nav class="bottom-nav-container">
+            <div class="bottom-nav">
+                <a href="index.html" class="nav-item"><i class="fas fa-home"></i></a>
+                <a href="mais_compras.html" class="nav-item"><i class="fas fa-store"></i></a>
+                <a href="favoritos.html" class="nav-item"><i class="fas fa-heart"></i></a>
+                <a href="listas.html" class="nav-item"><i class="fas fa-list-ul"></i></a>
+                <a href="perfil.html" class="nav-item active"><i class="fas fa-user"></i></a>
+            </div>
+        </nav>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="perfil.script.js"></script>
+</body>
+</html>

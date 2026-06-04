@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopFamily - Itens da Lista</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="dark-theme">
+
+    <div class="app-container" style="padding-bottom: 90px;"> <header class="category-header">
+            <a href="listas.html" class="back-arrow-btn">
+                <i class="fas fa-chevron-left"></i>
+            </a>
+            <h1 id="nome-lista-titulo" class="category-main-title">Carregando Lista...</h1>
+            <div style="width: 40px;"></div>
+        </header>
+
+        <main class="main-content">
+            
+            <section class="add-item-box">
+                <input type="text" id="input-item-nome" placeholder="Nome do item (ex: Arroz, Picanha)">
+                <div class="select-row">
+                    <select id="select-item-categoria">
+                        <option value="Outros">Classificar Categoria...</option>
+                        <option value="Carnes">Carnes</option>
+                        <option value="Vegetais">Vegetais</option>
+                        <option value="Frutas">Frutas</option>
+                        <option value="Pão">Pão</option>
+                        <option value="Lanches">Lanches</option>
+                        <option value="Padaria">Padaria</option>
+                        <option value="Laticínios e Doces">Laticínios e Doces</option>
+                        <option value="Frangos">Frangos</option>
+                        <option value="Produtos de Limpeza">Produtos de Limpeza</option>
+                    </select>
+                    <button class="add-item-btn" onclick="adicionarItemNoBanco()">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+            </section>
+
+            <section class="itens-lista-wrapper" id="itens-lista-container">
+                </section>
+
+        </main>
+
+        <div class="total-footer-container">
+            <div class="total-footer-content">
+                <div class="total-info-text">
+                    <span class="total-label">O valor estimado da sua compra será:</span>
+                    <span class="total-count" id="total-itens-count">0 itens adicionados</span>
+                </div>
+                <div class="total-price-value" id="total-lista-preco">R$ 0,00</div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="custom-modal-overlay" id="item-details-modal">
+        <div class="custom-modal-card">
+            <h3 class="modal-title" id="details-modal-title">Configurar Item</h3>
+            <p class="modal-subtitle">Defina a quantidade/peso e o preço estimado:</p>
+            
+            <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                <div style="flex: 1; text-align: left;">
+                    <label style="font-size: 0.8rem; color: var(--text-muted);">Qtd / Peso</label>
+                    <input type="text" id="modal-item-qtd" class="modal-input-field" style="margin-bottom: 0; margin-top: 5px;" placeholder="Ex: 2">
+                </div>
+                <div style="flex: 1; text-align: left;">
+                    <label style="font-size: 0.8rem; color: var(--text-muted);">Preço Unitário</label>
+                    <input type="number" step="0.01" id="modal-item-valor" class="modal-input-field" style="margin-bottom: 0; margin-top: 5px;" placeholder="0.00">
+                </div>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; background: #1c2d47; padding: 12px; border-radius: 8px; margin-bottom: 20px;">
+                <span style="font-size: 0.85rem; color: var(--text-white); font-weight: 600;">Subtotal do Item:</span>
+                <span id="modal-item-total-preview" style="font-size: 1.1rem; color: var(--text-white); font-weight: 700;">R$ 0,00</span>
+            </div>
+            
+            <div class="modal-actions">
+                <button class="modal-btn btn-cancel" onclick="fecharModalItem()">Cancelar</button>
+                <button class="modal-btn btn-confirm" onclick="salvarDetalhesDoItem()">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="detalhes_lista.script.js"></script>
+</body>
+</html>
